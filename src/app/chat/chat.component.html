@@ -1,1 +1,15 @@
-<p>chat works!</p>
+<form [formGroup]="myForm">
+  <!-- Form controls go here -->
+  <div>
+    <table>
+      <tr>
+        <td>
+          <label for="prompt">Prompt:</label
+          ><input id="prompt" type="text" formControlName="prompt" />
+        </td>
+        <td><button type="button" (click)="sendPrompt()">Click Me</button></td>
+      </tr>
+    </table>
+    {{ agentResponse }}
+  </div>
+</form>
