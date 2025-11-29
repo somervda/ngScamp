@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { WebagentService } from '../services/webagent.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { marked } from 'marked';
 
 @Component({
   selector: 'app-chat',
@@ -21,13 +22,14 @@ export class ChatComponent {
   }
 
   agentChat(prompt: string) {
-    this.webagent.getChat(prompt).subscribe((result) => {
-      console.log(result);
-      this.agentResponse = result;
+    this.webagent.getChat(prompt).subscribe((data) => {
+      console.log(data);
+      this.agentResponse = marked(data, { async: false });
     });
   }
   sendPrompt() {
     this.agentResponse = '';
+    console.log(this.myForm.value);
     this.agentChat(this.myForm.value.prompt);
     // Perform desired actions here
   }

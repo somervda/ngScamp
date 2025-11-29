@@ -3,13 +3,23 @@
   <div>
     <table>
       <tr>
-        <td>
-          <label for="prompt">Prompt:</label
-          ><input id="prompt" type="text" formControlName="prompt" />
+        <td style="vertical-align: top">
+          <textarea
+            class="chat-container"
+            matInput
+            id="prompt"
+            name="prompt"
+            rows="3"
+            cols="80"
+            formControlName="prompt"
+          ></textarea>
         </td>
-        <td><button type="button" (click)="sendPrompt()">Click Me</button></td>
+        <td style="vertical-align: top">
+          &nbsp;
+          <button class="goButton" (click)="sendPrompt()">Go</button>
+        </td>
       </tr>
     </table>
-    {{ agentResponse }}
+    <div class="response-container" [innerHTML]="agentResponse"></div>
   </div>
 </form>
