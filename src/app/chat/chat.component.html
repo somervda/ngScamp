@@ -1,10 +1,11 @@
 <form [formGroup]="myForm">
   <!-- Form controls go here -->
-  <div>
+  <div >
     <table>
       <tr>
         <td style="vertical-align: top">
           <textarea
+            [class.waiting]="wait"
             class="chat-container"
             matInput
             id="prompt"
@@ -16,7 +17,7 @@
         </td>
         <td style="vertical-align: top">
           &nbsp;
-          <button class="goButton" (click)="sendPrompt()">Go</button>
+          <button class="goButton" (click)="sendPrompt()" [class.waiting]="wait">Go</button>
         </td>
       </tr>
     </table>

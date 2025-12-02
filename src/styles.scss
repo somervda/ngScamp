@@ -2,3 +2,7 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.waiting-cursor {
+  cursor: wait !important; /* !important ensures it overrides other cursor styles */
+}
