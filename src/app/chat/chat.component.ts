@@ -17,6 +17,7 @@ export class ChatComponent {
   agentResponse = '';
   myForm: FormGroup;
   wait=false;
+  promptValue="";
 
   constructor(private webagent: WebagentService,     
     @Inject(DOCUMENT) private document: Document,
@@ -40,7 +41,10 @@ export class ChatComponent {
   sendPrompt() {
     this.agentResponse = '';
     console.log(this.myForm.value);
-    this.agentChat(this.myForm.value.prompt);
+    this.agentChat(this.promptValue);
     // Perform desired actions here
+  }
+  clrPrompt() {
+    this.promptValue="";
   }
 }
