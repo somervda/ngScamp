@@ -1,23 +1,33 @@
 <form [formGroup]="myForm">
   <!-- Form controls go here -->
   <div class="container">
-    <div width="100%">
-          <textarea
-            [class.waiting]="wait"
-            id="prompt"
-            name="prompt"
-            formControlName="prompt"
-            [(ngModel)]="promptValue"
-            style="width: 100%;  height: 75px;margin:3px;border-radius: 3px;"
-          ></textarea>
-      </div>
-      <div>
-          <button  (click)="sendPrompt()" [class.waiting]="wait" style="width:70px;margin:3px;height:35px;margin-bottom: 10px;font-weight: 600;background-color: green;color: white;">Go</button>
-            
-          <button  (click)="clrPrompt()" [class.waiting]="wait" style="width:70px;margin:3px;vertical-align: top;">Clear</button>
-      </div>
-      <div>
-        <div [innerHTML]="agentResponse" style="background-color: rgb(229, 227, 227);margin:3px;padding: 3px;border-radius: 3px; min-height: 20px;"></div>
+    <div>
+      <textarea
+        [class.waiting]="wait"
+        id="prompt"
+        name="prompt"
+        formControlName="prompt"
+        [(ngModel)]="promptValue"
+        class="promptfield"
+        autocapitalize="none"
+        (keyup.enter)="onEnterPressed()"
+      ></textarea>
+    </div>
+    <div>
+      <button (click)="sendPrompt()" [class.waiting]="wait" class="goButton">
+        Go
+      </button>
+
+      <button
+        (click)="clrPrompt()"
+        [class.waiting]="wait"
+        style="width: 70px; margin: 3px; vertical-align: top"
+      >
+        Clear
+      </button>
+    </div>
+    <div class="responsediv">
+      <div [innerHTML]="agentResponse" class="responsefield"></div>
     </div>
   </div>
 </form>
