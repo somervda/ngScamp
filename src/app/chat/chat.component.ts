@@ -5,11 +5,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { marked } from 'marked';
 import { DOCUMENT } from '@angular/common';
 import { Inject, Renderer2 } from '@angular/core';
+import { FormsModule } from '@angular/forms'; // Import FormsModule
 
 @Component({
   selector: 'app-chat',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, FormsModule],
   templateUrl: './chat.component.html',
   styleUrl: './chat.component.scss',
 })
@@ -18,6 +19,7 @@ export class ChatComponent {
   myForm: FormGroup;
   wait = false;
   promptValue = '';
+  selectedLLM = 1;
 
   constructor(
     private webagent: WebagentService,
@@ -32,8 +34,8 @@ export class ChatComponent {
   agentChat(prompt: string) {
     // this.cursorService.showWaitingCursor()
     this.showProcessing(true);
-    this.webagent.getChat(prompt).subscribe((data) => {
-      console.log(data);
+    this.webagent.getChat(prompt, this.selectedLLM).subscribe((data) => {
+      console.log('response:', data);
       this.showProcessing(false);
       this.agentResponse = marked(data, { async: false });
     });

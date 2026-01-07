@@ -25,6 +25,15 @@
       >
         Clear
       </button>
+      <select
+        id="llm"
+        [(ngModel)]="selectedLLM"
+        [ngModelOptions]="{ standalone: true }"
+      >
+        <option value="1" selected="true">Piai</option>
+        <option value="2">powerspec</option>
+        <option value="3">Mac</option>
+      </select>
     </div>
     <div class="responsediv">
       <div [innerHTML]="agentResponse" class="responsefield"></div>
