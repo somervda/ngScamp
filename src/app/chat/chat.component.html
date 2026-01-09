@@ -18,22 +18,20 @@
         Go
       </button>
 
-      <button
-        (click)="clrPrompt()"
-        [class.waiting]="wait"
-        style="width: 70px; margin: 3px; vertical-align: top"
-      >
-        Clear
-      </button>
       <select
         id="llm"
         [(ngModel)]="selectedLLM"
         [ngModelOptions]="{ standalone: true }"
+        class="llmSelector"
       >
         <option value="1" selected="true">jetai</option>
         <option value="2">powerspec</option>
         <option value="3">Mac</option>
       </select>
+
+      <button (click)="clrPrompt()" [class.waiting]="wait" class="btnClear">
+        Clear
+      </button>
     </div>
     <div class="responsediv">
       <div [innerHTML]="agentResponse" class="responsefield"></div>
